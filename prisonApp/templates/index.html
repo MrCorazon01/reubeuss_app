@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <div class="container-fluid d-flex flex-row">
+        <div class="col-5 d-flex flex-column justify-content-center">
+            <div class="bg-dark text-white rounded-5 d-flex justify-content-center align-self-center col-8 mb-4">
+                <div class="py-4 text-center"><h2>Bienvenue sur <br> Prison Manager</h2></div>
+            </div>
+            <div class="px-3 mb-2">
+                <p>Cette application vous permet de gérer efficacement votre prison en enregistrant les informations sur les détenus, le personnel, les cellules et les visiteurs. 
+                    Elle vous permet également de suivre le mouvement des détenus entre les cellules et abrite aussi beacoup d'autre fonctionnalité</p>
+            </div>
+            <div class="bg-dark rounded-4 col-6 d-flex justify-content-center align-self-center">
+                <button class="btn"><a href="/login" class="text-decoration-none text-white"><h3>Identifiez-vous</h3></a></button>
+            </div>
+
+        </div>
+        <div class="col-7 d-flex justify-content-center">
+            <img src="{{url_for('static', filename='img/img.png')}}" alt="image" width="500">
+        </div>
+    </div>
+
+{% endblock %}

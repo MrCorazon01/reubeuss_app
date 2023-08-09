@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-striped" id="tableau">
+    
+        <thead class="thead-dark">
+            <tr>
+                <th>Numero Detenu</th>
+                <th>Nom</th>
+                <th>Date incarcération</th>
+                <th>Date libération</th>
+                <th>motif_detention</th>
+                <th>id cellule</th>
+            </tr>
+        </thead>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.numero_detenu  }}</td>
+            <td>{{ i.nom  }}</td>
+            <td>{{ i.date_incarceration  }}</td>
+            <td>{{ i.date_liberation  }}</td>
+            <td>{{ i.motif_detention  }}</td>
+            <td>{{ i.id_cellule  }}</td>
+        </tr>
+         {% endfor %}
+    </table>
+
+<div>
+  <p>{{ data|length }} Détenus au total</p>
+</div>
+
+
+
+
+{% endblock %}
+
+
+

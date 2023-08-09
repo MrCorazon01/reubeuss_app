@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-striped" id="tableau">
+    
+        <thead class="thead-dark">
+            <tr>
+                <th>id du dossier :</th>
+                <th>numero du detenu</th>
+                <th>etat civil</th>
+                <th>antecedant judiciaire</th>
+            </tr>
+        </thead>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.id_dosser  }}</td>
+            <td>{{ i.numero_detenu  }}</td>
+            <td>{{ i.etat_civil  }}</td>
+            <td>{{ i.antecedant_judiciaire  }}</td>
+        </tr>
+         {% endfor %}
+    </table>
+
+<div>
+  <p>{{ data|length }} Dossiers au total</p>
+</div>
+
+
+
+
+{% endblock %}
+
+
+

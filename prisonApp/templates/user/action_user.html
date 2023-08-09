@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+  <h2><b>Liste du users</b></h2>
+</div>
+<div class="tableau">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID user :</th>
+        <th>Username</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    {% for i in data %}
+    <tr>
+      <td>{{ i.id_user  }}</td>
+      <td>{{ i.username  }}</td>
+      <td>{{ i.nom  }}</td>
+      <td>
+        <form
+          method="POST"
+          action="{{ url_for('supprimer_user', id_user = i.id_user) }}"
+        >
+          <input type="hidden" name="_method" value="DELETE" />
+          <button type="submit" class="btn btn-outline-danger">Sup</button>
+        </form>
+      </td>
+      <td>
+        <a
+          href="/user/modification_user/{{i.id_user}}"
+          class="text-decoration-none"
+          ><button class="btn btn-dark">Modifier</button></a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <div>
+    <p>{{ data|length }} User(s) au total</p>
+  </div>
+
+  {% if error %}
+  <div class="alert alert-danger col-3">{{ error }}</div>
+  {% endif %} {% if message %}
+  <div class="alert alert-success col-3">
+    {{ message }}
+    <div />
+    {% endif %}
+  </div>
+
+  {% endblock %}
+</div>

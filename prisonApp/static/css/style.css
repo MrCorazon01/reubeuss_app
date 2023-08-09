@@ -1,0 +1,37 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+input, textarea, select{
+    width: 280px;
+    height: 50px;
+    border: groove;
+    border-radius: 10px;
+    border-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 2px 0px;
+}
+
+.btn-btn{
+    width: 150px !important;
+}
+
+.navbar-brand{
+    font-size: 24px !important;
+}
+.nav-link{
+    font-size: 18px !important;
+}
+
+.tableau{
+    margin-bottom: 150px !important;
+}
+
+.underline{
+    
+    height: 7px;
+}
+
+
+
+

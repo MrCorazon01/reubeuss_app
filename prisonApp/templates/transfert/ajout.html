@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST" action="/transfert/ajouter_transfert">
+    <div class="container-fluid">
+        <div class="row mx-3 mb-2">
+            <h2><b>Ajout d'un transfert</b></h2>
+            
+        </div>
+       <div class="d-flex flex-row">
+                <div class="col-8 d-flex flex-row">
+                    <div class="col-6 d-flex flex-column justify-content-between">
+                        <div>
+                            <label for="id_transfert">ID transfert:</label><br>
+                            <input type="number" id="id_transfert" name="id_transfert" value="{{ form_data['id_transfert'] }}">
+                        </div>
+
+                        <div>
+                            <br><label for="numero_detenu">Numéro du détenu:</label><br>
+                            <input type="number" id="numero_detenu" name="numero_detenu" value="{{ form_data['numero_detenu'] }}">
+                        </div>
+
+                        <div>
+                            <br><label for="motif">Motif du transfert:</label><br>
+                            <textarea id="motif" name="motif">{{ form_data['motif'] }}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-6 d-flex flex-column justify-content-between">
+                        <div>
+                            <label for="date_trans">Nom:</label><br>
+                            <input type="date" id="date_trans" name="data_transfert" value="{{ form_data['data_transfert'] }}">
+                        </div>
+                        <div>
+                            <br><label for="destination">Destination:</label><br>
+                            <input type="text" id="destination" name="lieu_destination" value="{{ form_data['lieu_destination'] }}">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center mx-3">
+                    <img src="{{ url_for('static', filename='img/prisoner.png') }}" width="250">
+                </div>
+       </div>
+      <div class="container-fluid d-flex flex-row">
+        <div class='py-3'><input type="submit" value='Ajouter' class='btn btn-btn text-white bg-dark fw-bold me-5'></div>
+        <div class="">
+            {% if error %}
+            <div class="alert alert-danger mt-2 ms-5">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            {% if message %}
+            <div class="alert alert-success mt-2 ms-5">
+                {{ message }}
+            </div>
+            {% endif %}
+        </div>
+      </div>
+
+    </div>
+</form>
+
+
+
+
+
+{% endblock %}
+
+
+

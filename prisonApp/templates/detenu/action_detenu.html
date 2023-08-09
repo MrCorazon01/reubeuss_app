@@ -1,0 +1,90 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+  <h2><b>Liste des détenus</b></h2>
+</div>
+<div class="tableau">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Numero Detenu</th>
+        <th>Nom</th>
+        <th>Date incarcération</th>
+        <th>Date libération</th>
+        <th>motif_detention</th>
+        <th>id cellule</th>
+        <th>Supprimer</th>
+        <th>Modifier</th>
+      </tr>
+    </thead>
+    {% for i in data %}
+    <tr>
+      <td>{{ i.numero_detenu }}</td>
+      <td>{{ i.nom }}</td>
+      <td>{{ i.date_incarceration }}</td>
+      <td>{{ i.date_liberation }}</td>
+      <td>{{ i.motif_detention }}</td>
+      <td>{{ i.id_cellule }}</td>
+      <td>
+        <form
+          method="POST"
+          action="{{ url_for('supprimer_detenu', numero_detenu=i.numero_detenu) }}"
+        >
+          <input type="hidden" name="_method" value="DELETE" />
+          <button type="submit" class="btn btn-outline-danger btn-delete">Sup</button>
+        </form>
+      </td>
+      <td>
+        <a
+          href="modification_detenu/{{ i.numero_detenu }}"
+          class="text-decoration-none"
+          ><button class="btn btn-dark">Modifier</button></a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <div>
+    <p>{{ data|length }} Détenus au total</p>
+  </div>
+
+  {% if error %}
+  <div class="alert alert-danger col-3">{{ error }}</div>
+  {% endif %} {% if message %}
+  <div class="alert alert-success col-3">
+    {{ message }}
+    <div />
+    {% endif %}
+  </div>
+
+  {% block javascript %}
+<script>
+  // Sélectionnez tous les boutons de suppression
+  var deleteButtons = document.querySelectorAll('.btn-delete');
+
+  // Parcourez chaque bouton et ajoutez un gestionnaire d'événement
+  deleteButtons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      // Empêchez le comportement par défaut du bouton
+      event.preventDefault();
+
+      // Demandez une confirmation à l'utilisateur
+      var resultat = confirm("Êtes-vous sûr de vouloir supprimer ?");
+
+      // Vérifiez si l'utilisateur a cliqué sur "OK"
+      if (resultat) {
+        // Soumettez le formulaire de suppression
+        button.closest('form').submit();
+      } else {
+        // Annulez la suppression
+        console.log("Suppression annulée.");
+      }
+    });
+  });
+</script>
+{% endblock %}
+<!-- Fin du bloc de code JavaScript -->
+
+
+  {% endblock %}
+</div>

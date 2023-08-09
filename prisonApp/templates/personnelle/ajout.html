@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid tableau">
+    <div class="row ">
+    <div class="col mx-auto ">
+        <form method="POST" action='/personnelle/ajout_personnelle'>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endif %}
+                <div>
+                    <br>
+                    <label for="numero_personnel">Identifiant :</label>
+                    <input type="text" name="numero_personnel" id="numero_personnel"
+                           class="form-control" value="{{ form_data.numero_personnel }}" required>
+                </div>
+                <div >
+                    <br>
+                    <label for="nom">Nom :</label>
+                    <input type="text" name="nom" id="nom" class="form-control"
+                           value="{{ form_data.nom }}" required>
+                </div>
+                <div class=>
+                    <br>
+                    <label for="poste">Poste :</label>
+                    <select name="poste" id="poste" class="form-control" required>
+                        <option value="">-- Sélectionnez un poste --</option>
+                        <option value="directeur" {% if form_data.poste == 'directeur' %}selected{% endif %}>
+                            Directeur
+                        </option>
+                        <option value="administrateur" {% if form_data.poste == 'administrateur' %}selected{% endif %}>
+                            Administrateur
+                        </option>
+                        <option value="travailleur social" {% if form_data.poste == 'travailleur social' %}selected{% endif %}>
+                            Travailleur social
+                        </option>
+                        <option value="surveillant" {% if form_data.poste == 'surveillant' %}selected{% endif %}>
+                            Surveillant
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <br>
+                    <label for="fonction">Fonction :</label>
+                    <select name="fonction" id="fonction" class="form-control" required>
+                        <option value="">-- Sélectionnez une fonction --</option>
+                        <option value="responsable" {% if form_data.fonction == 'responsable' %}selected{% endif %}>
+                            Responsable
+                        </option>
+                        <option value="admin" {% if form_data.fonction == 'admin' %}selected{% endif %}>Admin</option>
+                        <option value="niveau1" {% if form_data.fonction == 'niveau1' %}selected{% endif %}>Niveau 1</option>
+                        <option value="niveau2" {% if form_data.fonction == 'niveau2' %}selected{% endif %}>Niveau 2</option>
+                    </select>
+                </div>
+                <br>
+                <br>
+                <div class="row ">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-lg btn-dark">Enregistrer</button>
+                    </div>
+                </div>
+            
+        </form>
+        
+    </div>
+    <div class="col-2 ">
+    </div>
+
+   
+    <div class="col mx-4 my-4 d-flex justify-content-center">
+        <img src="{{ url_for('static', filename='img/personnelle2.png') }}" width="320" height="300">
+    </div>
+
+    </div>
+    
+</div>
+{% endblock %}

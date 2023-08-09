@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row d-flex flex-column justify-content-center">
+    <div class="bg-dark text-white d-flex align-self-center justify-content-center col-10 py-3 rounded-3">
+      <h1>Gestion des détenus</h1>
+    </div>
+    <div class="d-flex flex-row justify-content-around mt-3">
+      <a href="/detenu/ajout_detenu" class="text-dark text-decoration-none fw-bold d-flex flex-column justify-content-center">
+        <div class="d-flex justify-content-center bg-dark text-white p-5 rounded-3">
+          <img src="{{ url_for('static', filename='img/ajout_prisoner.png') }}" alt="" width="150">
+          
+        </div>
+        <div class="d-flex align-self-center"><p>Ajouter un détenu</p></div>
+      </a>
+      <a href="/detenu/action_detenu" class="text-dark text-decoration-none fw-bold d-flex flex-column justify-content-center">
+        <div class="d-flex justify-content-center bg-dark text-white p-5 rounded-3">
+          <img src="{{ url_for('static', filename='img/acceder_prisoner.png') }}" alt="" width="150">
+        </div>
+        <div class="d-flex align-self-center"><p>Accéder aux détenus</p></div>
+      </a>
+    </div>
+  </div>
+</div>
+   
+{% endblock %}
+

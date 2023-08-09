@@ -1,0 +1,7 @@
+Directeur: Le directeur est responsable de la gestion globale du site et a accès à toutes les fonctionnalités de l'application. Il peut gérer les utilisateurs, les rôles, les cellules, les détenus, les membres du personnel et les visiteurs. Il peut également générer des rapports sur l'activité du site.
+
+Admin: L'administrateur est responsable de la gestion des utilisateurs, des rôles et des cellules. Il a également accès à toutes les fonctionnalités liées à la gestion des détenus et des membres du personnel, mais ne peut pas générer de rapports.
+
+Personnel de niveau 1 (personnelle_l1): Le personnel de niveau 1 est responsable de la gestion des détenus et des visiteurs. Il peut ajouter et modifier des informations sur les détenus, attribuer des cellules et gérer les visites.
+
+Personnel de niveau 2 (personnelle_l2): Le personnel de niveau 2 est responsable de la gestion des membres du personnel. Il peut ajouter et modifier des informations sur les membres du personnel, gérer les affectations de postes et attribuer des tâches aux détenus.

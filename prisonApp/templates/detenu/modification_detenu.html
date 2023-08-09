@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST" action="/detenu/modifier_detenu/{{ form_data.numero_detenu }}">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="container-fluid">
+        <div class="row mx-3">
+            <h2><b>Modification des infomations de {{ form_data.nom }}</b></h2>
+        </div>
+       <div class="d-flex flex-row">
+
+                <div class="col-8 d-flex flex-row">
+                    <div class="col-6 d-flex flex-column justify-content-between">
+                        <div>
+                            <label for="numero_detenu">Numéro de détenu:</label><br>
+                            <input type="number" id="numero_detenu" name="numero_detenu" value="{{ form_data['numero_detenu'] }}">
+                        </div>
+
+                        <div>
+                            <br><label for="date_incarceration">Date d'incarcération:</label><br>
+                            <input type="date" id="date_incarceration" name="date_incarceration" value="{{ form_data['date_incarceration'] }}">
+                        </div>
+
+                        <div>
+                            <br><label for="motif_detention">Motif de détention:</label><br>
+                            <textarea id="motif_detention" name="motif_detention">{{ form_data['motif_detention'] }}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-6 d-flex flex-column justify-content-between">
+                        <div>
+                            <label for="nom">Nom:</label><br>
+                            <input type="text" id="nom" name="nom" value="{{ form_data['nom'] }}">
+                        </div>
+                        <div>
+                            <br><label for="date_liberation">Date de libération:</label><br>
+                            <input type="date" id="date_liberation" name="date_liberation" value="{{ form_data['date_liberation'] }}">
+                        </div>
+                        <div>
+                            <br><label for="id_cellule">Numéro de cellule:</label><br>
+                            <select name="id_cellule" id="id_cellule">
+                              {% for cellule in cellules %}
+                                {% if current_cellule.id_cellule == cellule.id_cellule %}
+                                <option type="number" value="{{ cellule.id_cellule }}" selected>{{ current_cellule.numero }}</option>
+                                {% else %}
+                                    <option type="number" value="{{ cellule.id_cellule }}">{{ cellule.numero }}</option>
+                                {% endif %}
+                              {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-items-center mx-3">
+                    <img src="{{ url_for('static', filename='img/prisoner.png') }}" width="250">
+                </div>
+                
+       </div>
+      <div class="container-fluid">
+        <div class='py-3'><input type="submit" value='Modifier' class='btn btn-btn text-white bg-dark fw-bold '></div>
+      </div>
+
+   <div/>
+</form>
+{% if error %}
+  <div class="alert alert-danger col-3">
+      {{ error }}
+  </div>
+{% endif %}
+
+{% if message %}
+  <div class="alert alert-success col-3">
+    {{ message }}
+  <div/>
+{% endif %}
+
+
+
+{% endblock %}
+
+
+

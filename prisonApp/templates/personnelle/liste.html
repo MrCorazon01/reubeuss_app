@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-striped tableau" id="tableau">
+    
+        <thead class="thead-dark">
+            <tr>
+                <th>Identifiant :</th>
+                <th>Nom</th>
+                <th>Poste</th>
+                <th>fonction</th>
+            </tr>
+        </thead>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.numero_personnel  }}</td>
+            <td>{{ i.nom  }}</td>
+            <td>{{ i.poste  }}</td>
+            <td>{{ i.fonction  }}</td>
+        </tr>
+         {% endfor %}
+    </table>
+
+<div>
+  <p>{{ data|length }} Personnels au total</p>
+</div>
+
+
+
+
+{% endblock %}
+
+
+

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container tableau">
+  <h3>Modifier le dossier administratif de {{ detenu.nom }}</h3>
+
+  <div class="row d-flex flex-column justify-content-center">
+      
+    <div class="col my-4">
+      <form method="POST" action="/dossier/modifier_dossier" class="row">
+        {% if error %}
+         <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+        {% if message %}
+         <div class="alert alert-success">{{ message }}</div>
+        {% endif %}
+        <div class="mb-3 col-6">
+          <label for="id_dosser" class="form-label">id du dossier:</label>
+          <input type="text" class="form-control" id="id_dosser" name="id_dosser" value="{{ form_data.id_dosser }}" required>
+        </div>
+        <div class="mb-3 col-6">
+          <label for="numero_detenu" class="form-label">Numéro du détenu:</label>
+          <input type="text" class="form-control" id="numero_detenu" name="numero_detenu" value="{{ form_data.numero_detenu }}" required>
+        </div>
+        <div class="mb-3 col-6">
+          <label for="etat_civil" class="form-label">État civil:</label>
+          <select class="form-select" id="etat_civil" name="etat_civil" value="{{ form_data.etat_civil}}" required>
+            <option value="{{ form_data.etat_civil }}">{{ form_data.etat_civil }}</option>
+            <option value="Célibataire">Célibataire</option>
+            <option value="Marié">Marié</option>
+            <option value="Divorcé">Divorcé</option>
+            <option value="Veuf">Veuf</option>
+          </select>
+        </div>
+        
+
+        <div class="mb-3 col-6">
+          <label for="antecedant_judiciaire" class="form-label">Antécédents judiciaires:</label>
+          <textarea class="form-control" id="antecedant_judiciaire" name="antecedant_judiciaire" rows="3" required>{{ form_data.antecedant_judiciaire }}</textarea>
+        </div>
+        <div class="mb-3 col-4">
+        <button type="submit" class="btn btn-lg btn-dark">Ajouter le dossier </button>
+      </div>
+      </form>
+
+    </div>
+    <div class="col d-flex justify-content-end">
+      <img src="{{ url_for('static', filename='img/dossier.png') }}" alt="" width="250" class="ms-5">
+    </div>
+  </div>
+</div>
+{% endblock %}

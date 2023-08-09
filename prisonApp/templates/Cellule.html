@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <h2><b>Liste des cellules</b></h2>
+</div>
+<div class="tableau">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID cellule</th>
+                <th>Numero</th>
+                <th>Capacité</th>
+                <th>Statut</th>
+
+            </tr>
+        </thead>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.id_cellule }}</td>
+            <td>{{ i.numero }}</td>
+            <td>{{ i.capacite }}</td>
+            <td>{{ i.statut }}</td>
+            <td><a href="/cellule/info_cellule/{{ i.id_cellule }}" class="text-decoration-none"> > </a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <div>
+        <p>{{ data|length }} Cellules au total</p>
+    </div>
+</div>
+
+{% endblock %}

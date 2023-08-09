@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST" action="/user/ajouter_user">
+    <div class="container-fluid">
+        <div class="row mx-3 mb-2">
+            <h2><b>Ajout de user</b></h2>
+
+        </div>
+       <div class="d-flex flex-row">
+                <div class="col-8 d-flex flex-row">
+                    <div class="col-12 d-flex flex-column justify-content-between">
+                        <div>
+                            <label for="username">Nom d'utilisateur:</label><br>
+                            <input type="text" name="username" id="username" required>
+
+                        </div>
+
+                        <div>
+                            <label for="password">Mot de passe:</label><br>
+                            <input type="password" name="password" id="password" required>
+                        </div>
+
+                        <div>
+                            <label for="role">Rôle:</label><br>
+                            <select name="role" id="role">
+                              <option value="Administrateur">Admin</option>
+                              <option value="Directeur">Directeur</option>
+                              <option value="Personnelle_l1">Personnel de niveau 1</option>
+                              <option value="Personnelle_l2">Personnel de niveau 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-items-center mx-3">
+                    <img src="{{ url_for('static', filename='img/prisoner.png') }}" width="250">
+                </div>
+       </div>
+      <div class="container-fluid d-flex flex-row">
+        <div class='py-3'><input type="submit" value='Ajouter' class='btn btn-btn text-white bg-dark fw-bold me-5'></div>
+        <div class="">
+            {% if error %}
+            <div class="alert alert-danger mt-2 ms-5">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            {% if message %}
+            <div class="alert alert-success mt-2 ms-5">
+                {{ message }}
+            </div>
+            {% endif %}
+        </div>
+      </div>
+
+    </div>
+</form>
+
+
+
+
+
+{% endblock %}
+
+
+

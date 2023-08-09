@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <h1>Cellule {{cellule.numero}}</h1>
+</div>
+{% if detenus.count() == 0 %}
+    <div class="alert alert-primary col-12 text-center">
+        <h3>Cette cellule est vide</h3>
+    </div>
+{% else %}
+    <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Numero cellule</th>
+                    <th>Numero Detenu</th>
+                    <th>Nom</th>
+                    <th>Date incarcération</th>
+                    <th>Date libération</th>
+                    <th>motif_detention</th>
+                </tr>
+            </thead>
+            {% for i in detenus %}
+            <tr>
+                <td>{{ cellule.numero }}</td>
+                <td>{{ i.numero_detenu  }}</td>
+                <td>{{ i.nom  }}</td>
+                <td>{{ i.date_incarceration  }}</td>
+                <td>{{ i.date_liberation  }}</td>
+                <td>{{ i.motif_detention  }}</td>
+
+            </tr>
+             {% endfor %}
+        </table>
+{% endif %}
+
+{% endblock %}
+
+
+

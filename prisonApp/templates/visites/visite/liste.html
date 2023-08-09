@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-striped" id="tableau">
+    
+        <thead class="thead-dark">
+            <tr>
+                <th>ID visite</th>
+                <th>ID visiteur</th>
+                <th>Date de la visite</th>
+                <th>Nom du visiteur</th>
+                <th>Numéro detenu</th>
+                <th>lien avec detenu</th>
+
+            </tr>
+        </thead>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.id_visite  }}</td>
+            <td>{{ i.id_visiteur  }}</td>
+            <td>{{ i.date_visite  }}</td>
+            <td>{{ i.nom  }}</td>        
+            <td>{{ i.numero_detenu  }}</td>
+            <td>{{ i.lien_detenu  }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+<div>
+  <p>{{ data|length }} Visites au total</p>
+</div>
+
+
+
+
+{% endblock %}
+
+
+

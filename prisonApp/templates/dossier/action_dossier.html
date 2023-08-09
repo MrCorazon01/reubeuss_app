@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+  <h2><b>Liste des dossiers</b></h2>
+</div>
+<div class="tableau">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Identifiant :</th>
+        <th>Nom</th>
+        <th>Poste</th>
+        <th>fonction</th>
+      </tr>
+    </thead>
+    {% for i in data %}
+    <tr>
+      <td>{{ i.id_dosser  }}</td>
+      <td>{{ i.numero_detenu  }}</td>
+      <td>{{ i.etat_civil  }}</td>
+      <td>{{ i.antecedant_judiciaire  }}</td>
+      <td>
+        <form
+          method="POST"
+          action="{{ url_for('supprimer_dossier', id_dosser = i.id_dosser) }}"
+        >
+          <input type="hidden" name="_method" value="DELETE" />
+          <button type="submit" class="btn btn-outline-danger btn-delete">Sup</button>
+        </form>
+      </td>
+      <td>
+        <a
+          href="/dossier/modification_dossier/{{i.id_dosser}}"
+          class="text-decoration-none"
+          ><button class="btn btn-dark">Modifier</button></a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <div>
+    <p>{{ data|length }} dossier(s) au total</p>
+  </div>
+
+  {% if error %}
+  <div class="alert alert-danger col-3">{{ error }}</div>
+  {% endif %} {% if message %}
+  <div class="alert alert-success col-3">
+    {{ message }}
+    <div />
+    {% endif %}
+  </div>
+  {% block javascript %}
+<script>
+  // Sélectionnez tous les boutons de suppression
+  var deleteButtons = document.querySelectorAll('.btn-delete');
+
+  // Parcourez chaque bouton et ajoutez un gestionnaire d'événement
+  deleteButtons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      // Empêchez le comportement par défaut du bouton
+      event.preventDefault();
+
+      // Demandez une confirmation à l'utilisateur
+      var resultat = confirm("Êtes-vous sûr de vouloir supprimer ?");
+
+      // Vérifiez si l'utilisateur a cliqué sur "OK"
+      if (resultat) {
+        // Soumettez le formulaire de suppression
+        button.closest('form').submit();
+      } else {
+        // Annulez la suppression
+        console.log("Suppression annulée.");
+      }
+    });
+  });
+</script>
+{% endblock %}
+<!-- Fin du bloc de code JavaScript -->
+
+  {% endblock %}
+</div>
